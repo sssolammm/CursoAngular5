@@ -1,0 +1,93 @@
+
+<strong>Two way databinding & ngStyle & ngClass  - Example</strong>
+<h3>Slector de colores</h3>
+	<input type="text" [(ngModel)]="color_seleccionado" />
+
+
+	<button (click)="logColorSeleccionado()">Mostrar log</button>
+	<strong>Color elegido:</strong>
+
+	<!-- Otra forma de hacer el bind de la clase -->
+	<!--[class.fondoAzul] = "color_seleccionado == 'blue'"-->
+	
+	<!-- ngClass condicional -->
+	
+	<!-- <pre [style.border] = "color_seleccionado == 'red' ? '5px solid black' : '1px solid black'"
+		[ngClass]="{
+			fondoAzul: color_seleccionado == 'blue',
+			fondoVerde: color_seleccionado == 'green',
+			letraGrande : 1 == 1
+		}">
+		{{color_seleccionado}}
+	</pre> -->
+
+	<!-- ngClass obligatorio -->
+
+	<pre [style.border] = "color_seleccionado == 'red' ? '5px solid black' : '1px solid black'"
+		[ngClass]="['fondoAzul', 'letraGrande']">
+		{{color_seleccionado}}
+	</pre>
+
+
+	<div [ngStyle]="{
+		'background': color_seleccionado,
+		'color': white,
+		'width': '200px',
+		'height': '200px',
+		'float': 'right',
+		'margin-right': '69%'
+		}"></div>
+<div style ="clear:both"></div>
+
+
+<hr/>
+<strong>Switch- Example</strong>
+
+<h3 [ngStyle]="{'background': color, 
+		'color': 'white',
+		'padding': '20px'
+	}">Colores switch</h3>
+	<ul [ngSwitch]="color">
+		<li *ngSwitchCase="'red'">Es de color {{color}}</li>
+		<li *ngSwitchCase="'green'">Es de color {{color}}</li>
+		<li *ngSwitchCase="'blue'">Es de color {{color}}</li>
+	</ul>
+
+
+
+<hr/>
+<ul>
+	<strong>FOR- Example</strong>
+	<li *ngFor="let trabajador of trabajadores; let index = index">
+		<ul>
+			<li>{{index + 1}}</li>
+			<li>{{trabajador.nombre}}</li>
+			<li>{{trabajador.edad}}</li>
+			<li>{{trabajador.cargo}}</li>
+			<li>{{trabajador.contratado}}</li>
+		</ul>
+		<br/>
+	</li>
+</ul>
+
+<hr/>
+
+<div *ngIf="empleado.contratado == true">
+	<strong>IF - Click Event- Empleado estrella:</strong>
+	<ul>
+		<li>{{empleado.nombre}}</li>
+		<li>{{empleado.edad}}</li>
+		<li>{{empleado.cargo}}</li>
+		<li>{{empleado.contratado}}</li>
+	</ul>
+</div>
+<button (click)="cambiarContratado(false)">Cambiar contratado</button>
+<hr>
+
+<strong>Empleado estrella:</strong>
+<ul>
+	<li>{{trabajadores[1].nombre}}</li>
+	<li>{{trabajadores[1].edad}}</li>
+	<li>{{trabajadores[1].cargo}}</li>
+	<li>{{trabajadores[1].contratado}}</li>
+</ul>
