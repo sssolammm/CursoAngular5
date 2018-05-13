@@ -12,9 +12,14 @@ export class HomeComponent{
 	public listado_ropa:Array<string>;
 	public prenda_a_guardar:string;
 
+	public fecha;
+	public nombre = "Juan mArtInez";
+
 	constructor(
 		private _ropaService: RopaService
-	){}
+	){
+		this.fecha = new Date(2018, 4, 11);
+	}
 
 	ngOnInit(){
 		console.log(this._ropaService.prueba('Camiseta'));
