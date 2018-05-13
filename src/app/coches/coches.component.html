@@ -37,3 +37,16 @@
 		</li>
 	</ul>
 </div>
+
+<hr>
+
+<div>
+	<h4>Listado artículos</h4>
+	<ul *ngIf=articulos>
+		<li *ngFor="let articulo of articulos">
+			{{articulo.id}} - {{articulo.title}}
+
+		</li>
+	</ul>
+	<span *ngIf="!articulos">Loading...</span>
+</div>
